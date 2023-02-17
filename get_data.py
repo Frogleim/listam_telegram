@@ -41,6 +41,7 @@ def check_day(date_str):
 
 def get_current_data():
     global urls_data, result_data
+    result_data.clear()
     print(len(urls_data))
     for items_url in urls_data:
         order_url = main_url + items_url["url"]

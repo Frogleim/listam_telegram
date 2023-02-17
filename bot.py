@@ -27,21 +27,23 @@ class Bots:
             'Please wait, until I try to get new data for you\n'
             'it can take a couple minutes',
         )
-        res = get_data.run()
-        print(res)
-        try:
-            for result in res:
-                update.message.reply_text(
-                    f'Name: {result["name"]}'
-                    f'Price: {result["price"]}'
-                    f'URL: {result["url"]}',
+        while True:
+            res = get_data.run()
+            print(res)
+            try:
+                for result in res:
+                    update.message.reply_text(
+                        f'Name: {result["name"]}'
+                        f'Price: {result["price"]}'
+                        f'URL: {result["url"]}',
 
+                    )
+            except Exception as e:
+                update.message.reply_text(
+                    'Unfortunately, there is no new offer today'
                 )
-        except Exception as e:
-            update.message.reply_text(
-                'Unfortunately, there is no new offer today'
-            )
-            print(e)
+                print(e)
+            time.sleep(24*3600)
 
     @staticmethod
     def cancel(update, _):
