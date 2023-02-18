@@ -43,7 +43,7 @@ class Bots:
                     'Unfortunately, there is no new offer today'
                 )
                 print(e)
-            time.sleep(24*3600)
+            time.sleep(3600)
 
     @staticmethod
     def cancel(update, _):
